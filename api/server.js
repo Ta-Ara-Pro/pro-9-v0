@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 if (process.env.NODE_ENV === 'production') {
 	app.use(cors({
-	  origin: 'https://yourfrontenddomain.com',
+	  origin: 'https://shopping-website-front-n1-p9v1.vercel.app',
 	  credentials: true,
 	}));
   } else {
