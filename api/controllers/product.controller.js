@@ -3,7 +3,9 @@ import Product from "../models/product.model.js";
 
 export const getProducts = async (req, res) => {
 	try {
+		 console.log("Received request to /api/products");
 		const products = await Product.find({});
+		console.log("Products retrieved:", products.length);
 		res.status(200).json({ success: true, data: products });
 	} catch (error) {
 		console.log("error in fetching products:", error.message);
