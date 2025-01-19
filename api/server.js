@@ -50,6 +50,15 @@ app.get('/test-db', async (req, res) => {
     }
 });
 
+app.get('/api/debug', (req, res) => {
+    res.json({
+        NODE_ENV: process.env.NODE_ENV,
+        MONGO_URI: process.env.MONGO_URI ? "Available" : "Not Set",
+    });
+});
+
+
+
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.path}`);
     next();
