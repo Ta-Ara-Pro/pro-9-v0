@@ -13,14 +13,21 @@ const PORT = process.env.PORT || 5000;
 
 
 // Middleware
+// Middleware
 if (process.env.NODE_ENV === 'production') {
-	app.use(cors({
-	  origin: '*',
-	  credentials: true,
-	}));
-  } else {
-	app.use(cors({ origin: "http://localhost:5173" }));
-  }
+    app.use(cors({
+        origin: 'https://shopping-website-front-n1-p9v1.vercel.app', // No trailing slash
+        methods: ["GET", "POST", "DELETE", "PATCH"], // Allowed HTTP methods
+        allowedHeaders: ["Content-Type", "Authorization"], // Specify custom headers, if applicable
+    }));
+} else {
+    app.use(cors({
+        origin: "http://localhost:5173", // Localhost for development
+        methods: ["GET", "POST", "DELETE", "PATCH"],
+        allowedHeaders: ["Content-Type", "Authorization"],
+    }));
+}
+
   
 app.use(express.json()); // allows us to accept JSON data in the req.body
 
