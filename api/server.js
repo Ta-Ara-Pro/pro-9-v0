@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
     res.send('Server is running!');
   });
 //===================================
-app.get('/api/test-db', async (req, res) => {
+app.get('/test-db', async (req, res) => {
     try {
         const testConnection = await Product.findOne();
         if (testConnection) {
