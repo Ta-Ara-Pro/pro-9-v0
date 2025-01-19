@@ -36,6 +36,19 @@ app.get('/', (req, res) => {
     res.send('Server is running!');
   });
 //===================================
+app.get('/api/test-db', async (req, res) => {
+    try {
+        const testConnection = await Product.findOne();
+        if (testConnection) {
+            res.status(200).send('Database connected successfully!');
+        } else {
+            res.status(200).send('Database connected, but no data found.');
+        }
+    } catch (error) {
+        res.status(500).send(`Database connection error: ${error.message}`);
+    }
+});
+
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.path}`);
     next();
