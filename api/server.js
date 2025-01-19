@@ -32,7 +32,9 @@ if (process.env.NODE_ENV === 'production') {
 app.use(express.json()); // allows us to accept JSON data in the req.body
 
 app.use("/api/products", productRoutes);
-
+app.get('/', (req, res) => {
+    res.send('Server is running!');
+  });
 //===================================
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.path}`);
